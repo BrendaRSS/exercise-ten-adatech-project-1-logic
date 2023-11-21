@@ -1,6 +1,6 @@
 const userName = prompt("Digite seu nome:");
 
-const todoList = [];
+let todoList = [];
 const header = document.querySelector(".header");
 header.innerHTML = `
  <h1>${userName}'s todo list: ${new Date().toLocaleDateString()}</h1>
@@ -29,7 +29,7 @@ function addFeature() {
         }
 
         todoList.push({
-            id: todoList.length+1,
+            id: todoList.length > 0? todoList.length: 0,
             name: featureName,
             description: featureDescription,
         })
@@ -45,7 +45,7 @@ function addFeature() {
                 <button>
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
-                <button>
+                <button onclick="deleteFeature(${feat.id})">
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
@@ -67,4 +67,41 @@ function addFeature() {
     } catch (error) {
         alert(error);
     }
+}
+
+function deleteFeature(id){
+  const response = confirm("você deseja excluir essa tarefa?");
+
+  if(response === true){
+    const array = todoList.filter(object => {
+      return object.id !== id;
+    });
+
+    todoList = array;
+
+    const listUl = document.querySelector(".list");
+    listUl.innerHTML = "";
+
+    for (let feat of todoList) {
+      listUl.innerHTML = listUl.innerHTML + `
+         <li class="feat">
+            <div class="content-feat">
+              <div class="delete-edit">
+                <button>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+                <button onclick="deleteFeature(${feat.id})">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+              <p>${feat.name}</p>
+              <button class="check-button"><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div class="description-feature">
+              ${feat.description}
+            </div>
+          </li>
+        `
+    }
+  }
 }
