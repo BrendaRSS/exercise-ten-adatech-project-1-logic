@@ -29,6 +29,7 @@ function addFeature() {
         }
 
         todoList.push({
+            id: todoList.length+1,
             name: featureName,
             description: featureDescription,
         })
@@ -38,9 +39,9 @@ function addFeature() {
 
         for (let feat of todoList) {
             listUl.innerHTML = listUl.innerHTML + `
-        <li class="feat">
-            <div>
-              <div>
+         <li class="feat">
+            <div class="content-feat">
+              <div class="delete-edit">
                 <button>
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
@@ -49,10 +50,10 @@ function addFeature() {
                 </button>
               </div>
               <p>${feat.name}</p>
-              <button><i class="fa-solid fa-check"></i></button>
+              <button class="check-button"><i class="fa-solid fa-check"></i></button>
             </div>
-            <div>
-                ${feat.description}
+            <div class="description-feature">
+              ${feat.description}
             </div>
           </li>
         `
