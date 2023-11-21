@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Fulano's todo list</h1>
+    </header>
+    <main class="main">
+      <div class="inputs">
+        <div>
+            <input type="text" class="input-feature" minlength="4" maxlength="15" placeholder="Digite a atividade" />
+            <input type="text" class="input-description"  minlength="20" maxlength="50" placeholder="Digite a descrição"/>
+        </div>
+        <button onclick="addFeature()" title="Clique aqui para adicionar uma nova tarefa">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+
+      <div class="containerList">
+        <ul class="list">
+
+          <li class="feat">
+            <div>
+              <div>
+                <button>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+                <button>
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+              <p>atividade</p>
+              <button><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div>
+                Drescrição da atividade aqui Drescrição da atividade aqui 
+                Drescrição da atividade aqui Drescrição da atividade aqui 
+                Drescrição da atividade aqui Drescrição da atividade aqui
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

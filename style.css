@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.header{
+    width: 100vw;
+    height: 50px;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    width: 100vw;
+    min-height: 200px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 25px 10px 15px;
+}
+
+.inputs{
+    width: 100%;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.containerList{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list{
+    padding: 10px;
+}
+
+.feat{
+    list-style: none;
+    width: 250px;
+    min-height: 40px;
+    background-color: aquamarine;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    padding: 0px 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    gap: 6px;
+    padding: 10px 5px;
+}
+
+.feat > div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+}
+
+.feat div:nth-child(2) {
+  display: none;
+}
+
+.feat:hover div:nth-child(2){
+    display: block;
+}
+
+.feat button{
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
