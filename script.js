@@ -42,7 +42,7 @@ function addFeature() {
          <li class="feat">
             <div class="content-feat">
               <div class="delete-edit">
-                <button>
+                <button onclick="editionFeature(${feat.id})">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
                 <button onclick="deleteFeature(${feat.id})">
@@ -50,7 +50,7 @@ function addFeature() {
                 </button>
               </div>
               <p>${feat.name}</p>
-              <button class="check-button"><i class="fa-solid fa-check"></i></button>
+              <button class="check-button" onclick="checkFeature(${feat.id})"><i class="fa-solid fa-check"></i></button>
             </div>
             <div class="description-feature">
               ${feat.description}
@@ -87,7 +87,7 @@ function deleteFeature(id){
          <li class="feat">
             <div class="content-feat">
               <div class="delete-edit">
-                <button>
+                <button onclick="editionFeature(${feat.id})">
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
                 <button onclick="deleteFeature(${feat.id})">
@@ -95,7 +95,7 @@ function deleteFeature(id){
                 </button>
               </div>
               <p>${feat.name}</p>
-              <button class="check-button"><i class="fa-solid fa-check"></i></button>
+              <button class="check-button" onclick="checkFeature(${feat.id})"><i class="fa-solid fa-check"></i></button>
             </div>
             <div class="description-feature">
               ${feat.description}
@@ -104,4 +104,40 @@ function deleteFeature(id){
         `
     }
   }
+}
+
+function editionFeature(id){
+  let newName = prompt("Digite o novo título");
+  let newDescription = prompt("Digite a  nova descrição");
+  todoList[id].name = newName;
+  todoList[id].description = newDescription;
+
+  const listUl = document.querySelector(".list");
+  listUl.innerHTML = "";
+
+  for (let feat of todoList) {
+    listUl.innerHTML = listUl.innerHTML + `
+         <li class="feat">
+            <div class="content-feat">
+              <div class="delete-edit">
+                <button onclick="editionFeature(${feat.id})">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+                <button onclick="deleteFeature(${feat.id})">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+              <p>${feat.name}</p>
+              <button class="check-button" onclick="checkFeature(${feat.id})"><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div class="description-feature">
+              ${feat.description}
+            </div>
+          </li>
+        `
+  }
+}
+
+function checkFeature(id){
+  console.log("clicou")
 }
