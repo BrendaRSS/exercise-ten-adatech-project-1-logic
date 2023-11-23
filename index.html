@@ -32,32 +32,22 @@
         <button onclick="addFeature()" title="Clique aqui para adicionar uma nova tarefa">
           <i class="fa-solid fa-plus"></i>
         </button>
+        <div class="searchId">
+          Buscar por id
+          <div class="options-id"></div>
+        </div>
       </div>
 
-      <div class="containerList">
-        <ul class="list">
-          <li class="feat">
-            <div class="content-feat">
-                <div class="delete-edit">
-                    <button onclick="editionFeature('id')">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    </button>
-                    <button onclick="deleteFeature('id')">
-                    <i class="fa-solid fa-trash"></i>
-                    </button>
-                 </div>
-                <p>atividade</p>
-                <button class="check-button" onclick="checkFeature('id')">
-                <i class="fa-solid fa-check"></i>
-                </button>
-            </div>
-            <div class="description-feature">
-              Drescrição da atividade aqui Drescrição da atividade aqui Drescrição da atividade aqui Drescrição da
-              atividade aqui Drescrição da atividade aqui Drescrição da atividade aqui
-            </div>
-          </li>
-        </ul>
+      <div class="containerTasks">
+
+        <div class="containerList">
+          <ul class="list">
+            <h2>Ainda não há tarefas cadastradas...</h2>
+          </ul>
+        </div>
+
       </div>
+
     </main>
     <script src="/script.js"></script>
   </body>

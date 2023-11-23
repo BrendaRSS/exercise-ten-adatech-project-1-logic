@@ -1,9 +1,7 @@
-const userName = prompt("Digite seu nome:");
-
 let todoList = [];
 const header = document.querySelector(".header");
 header.innerHTML = `
- <h1>${userName}'s todo list: ${new Date().toLocaleDateString()}</h1>
+ <h1>Todo list: ${new Date().toLocaleDateString()}</h1>
 `
 
 function addFeature() {
@@ -32,6 +30,7 @@ function addFeature() {
             id: todoList.length > 0? todoList.length: 0,
             name: featureName,
             description: featureDescription,
+            dateOfCreation: new Date()
         })
 
         const listUl = document.querySelector(".list");
@@ -57,6 +56,14 @@ function addFeature() {
             </div>
           </li>
         `
+        }
+
+        const searchById = document.querySelector(".options-id");
+        searchById.innerHTML = "";
+        for(let task of todoList){
+          searchById.innerHTML = searchById.innerHTML + `
+          <div onclick="getById(${task.id})">${task.id} - ${task.name}</div>
+          `
         }
 
         const featureNameEmpty = document.querySelector('.input-feature');
@@ -103,20 +110,45 @@ function deleteFeature(id){
           </li>
         `
     }
+
+    const searchById = document.querySelector(".options-id");
+    searchById.innerHTML = "";
+    for (let task of todoList) {
+      searchById.innerHTML = searchById.innerHTML + `
+          <div onclick="getById(${task.id})">${task.id} - ${task.name}</div>
+          `
+    }
   }
 }
 
 function editionFeature(id){
   let newName = prompt("Digite o novo título");
   let newDescription = prompt("Digite a  nova descrição");
-  todoList[id].name = newName;
-  todoList[id].description = newDescription;
 
-  const listUl = document.querySelector(".list");
-  listUl.innerHTML = "";
+  try {
+    for (let value of todoList) {
+      if (newName === value.name) {
+        throw new Error("Essa tarefa já existe!")
+      }
+    }
+   
+    if (newName.length < 4 || newDescription < 20) {
+      throw new Error("O título deve conter no mínimo 4 caracteres e a descrição no mínimo 20 caracteres");
+    }
 
-  for (let feat of todoList) {
-    listUl.innerHTML = listUl.innerHTML + `
+    let onlyLetters = newName.replace(/[0-9]/g, '');
+    if (onlyLetters.length < 4) {
+      throw new Error("O título deve conter no mínimo 4 caracteres e não pode conter apenas números.")
+    }
+
+    todoList[id].name = newName;
+    todoList[id].description = newDescription;
+
+    const listUl = document.querySelector(".list");
+    listUl.innerHTML = "";
+
+    for (let feat of todoList) {
+      listUl.innerHTML = listUl.innerHTML + `
          <li class="feat">
             <div class="content-feat">
               <div class="delete-edit">
@@ -135,9 +167,20 @@ function editionFeature(id){
             </div>
           </li>
         `
+    }
+
+  } catch (error) {
+    alert(error);
   }
+
 }
 
 function checkFeature(id){
   console.log("clicou")
+}
+
+function getById(id){
+  const task = todoList.filter( p => p.id === id);
+
+  console.log(task);
 }
